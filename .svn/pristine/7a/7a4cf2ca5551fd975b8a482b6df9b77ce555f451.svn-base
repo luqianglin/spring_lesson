@@ -1,0 +1,5 @@
+package cn.et.lession3;
+
+public interface HouseOwer {
+	public void seekMyHouse();
+}

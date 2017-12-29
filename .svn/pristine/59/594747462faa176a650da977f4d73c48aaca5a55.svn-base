@@ -1,0 +1,9 @@
+package cn.et.lession3.java;
+
+import org.springframework.stereotype.Component;
+
+public class FHouseOwner implements HouseOwner{
+	public void seekMyHouse(){
+		System.out.println("·¿¶«");
+	}
+}

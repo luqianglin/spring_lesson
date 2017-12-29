@@ -1,0 +1,14 @@
+package cn.et.lession3.aop;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyMessage {
+	public void beforeSeek(){
+		System.out.println("«∞÷√");
+	}
+	public void afterSeek(){
+		System.out.println("∫Û÷√");
+	}
+	
+}

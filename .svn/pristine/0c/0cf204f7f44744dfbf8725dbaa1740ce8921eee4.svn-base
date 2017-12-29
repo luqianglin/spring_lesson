@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+	<!-- A a = new A()
+		a.setName("df0");普通属性依赖(基本数类型)
+		A b = new A()	
+		b.setA(a);
+	属性注入
+		property标签实际调用setName指定名字首字母大小的方法
+	 --> 
+   	<bean id="a1" class="cn.et.Lession1.A">
+   		<!-- value只适合基本数据类型  数字 字符 日期  ref表示对象的引用 -->
+   		<property name="name" value="里斯">
+   		</property>
+   	</bean>
+   	<bean id="b" class="cn.et.Lession1.B">
+   		<property name="a" ref="a1">	
+   		</property>
+   	</bean>
+   
+   <!-- 构造器注入 
+   		D d=new D(2,"dd",B())
+   -->
+   <bean id="d" class="cn.et.Lession1.ioc_di.D">
+   		<constructor-arg name="id" value="1"></constructor-arg>
+   		<constructor-arg name="name" value="说到底"></constructor-arg>
+   		<constructor-arg name="b" ref="b"></constructor-arg>
+   </bean>
+	
+</beans>

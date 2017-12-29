@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+        ">
+    <context:component-scan base-package="cn.et.lession2.mvc">
+		<!-- spring默认扫描自带注解比如Controller Service... 如果不希望扫描排除它 
+			<context:exclude-filter type="assignable" expression="cn.et.lession2.mvc.controller.MyController"/>
+			type="assignable" 排除指定的类
+			type="annotion" 表示排除某些带有指定注解的类
+		
+		-->	
+		<context:include-filter type="annotation" expression="cn.et.lession2.mvc.TEL"/>
+	</context:component-scan>
+  
+  	<aop:config>
+  	<!-- 定义切点(搜索条件)
+  		 表示 execution(返回值  包.类.方法(参数))
+  	 -->
+  		<aop:pointcut expression="execution(*cn.*..*.FHouseOwer.seekMyHouse(..))" id="myPointcut"/>
+  		<aop:aspect ref="myMessage">
+  			<aop:before method="beforeSeek" pointcut-ref="myPointcut"/>
+  			<aop:after method="afterSeek" pointcut-ref="myPointcut"/>
+  		</aop:aspect>
+  	</aop:config>
+	
+</beans>

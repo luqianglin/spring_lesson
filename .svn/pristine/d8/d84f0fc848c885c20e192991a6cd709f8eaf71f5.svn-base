@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        ">
+    
+	<context:component-scan base-package="cn.et.lession2.mvc">
+		<!-- spring默认扫描自带注解比如Controller Service... 如果不希望扫描排除它 
+			<context:exclude-filter type="assignable" expression="cn.et.lession2.mvc.controller.MyController"/>
+			type="assignable" 排除指定的类
+			type="annotion" 表示排除某些带有指定注解的类
+		
+		-->	
+	</context:component-scan>
+	<context:property-placeholder location="classpath:/cn/et/lession2/mvc/jdbc.properties"/>
+	<!-- 数据源只是为了获取连接 
+		${username}是某个关键字默认获取操作系统的用户名Administrator
+		bean首先优先读取配置文件
+		context优先读取操作系统
+	-->
+	<bean id="dataSouce" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   		<property name="url" value="${url}"></property>
+   		<property name="username" value="${username1}"></property>
+   		<property name="password" value="${password}"></property>
+   		<property name="driverClassName" value="${driverClass}"></property>
+   </bean>
+   <!-- 封装一些操作的方法 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSouce"></property>
+	</bean>
+	
+  
+</beans>

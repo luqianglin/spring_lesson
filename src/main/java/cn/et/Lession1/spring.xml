@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+	<!-- A a = new A()
+		A b = new A()	
+	 -->
+   	<bean id="a" class="cn.et.Lession1.A"></bean>
+   	<bean id="b" class="cn.et.Lession1.A"></bean>
+   	<!-- 如果没有指定id类 默认的名字是类名#编号 -->
+   	<bean class="cn.et.Lession1.B"></bean>
+   	<bean class="cn.et.Lession1.B"></bean>
+	
+</beans>

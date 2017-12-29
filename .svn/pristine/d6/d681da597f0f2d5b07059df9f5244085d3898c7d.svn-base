@@ -1,0 +1,16 @@
+package cn.et.Lession1.autowice;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+import cn.et.Lession1.B;
+
+public class Test {
+	public static void main(String[] args) {
+		//ÈÝÆ÷¶ÔÏó
+		ApplicationContext context = new GenericXmlApplicationContext("classpath:/cn/et/lession1/autowice/spring.xml");
+		B b =(B)context.getBean("b");
+		System.out.println(b.getA().getName());
+		
+	}
+}
